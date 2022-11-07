@@ -5,12 +5,22 @@ public class Main {
     static PizzaFabrik pizzaFabrik = new PizzaFabrik();
     static ArrayList<Bestellung> bestellungen = new ArrayList<>();
 
+    /**
+     * Methode für die Bestellung einer Pizza an eine Adresse
+     *
+     * @param adresse   Lieferadresse
+     * @param pizzaName Name der Pizza
+     */
     public static void bestellen(String adresse, String pizzaName) {
         Pizza pizza = pizzaFabrik.holePizza(pizzaName);
         Bestellung pizzaBestellung = new Bestellung(adresse, pizza);
         bestellungen.add(pizzaBestellung);
     }
 
+    /**
+     * Methode für den Lieferdienst
+     *
+     */
     public static void main(String[] args) {
         bestellen("Adresse1", "Pizza Verdure");
         bestellen("Adresse2", "Pizza Caprese");
