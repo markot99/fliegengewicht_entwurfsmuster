@@ -1,15 +1,17 @@
 import java.util.ArrayList;
 
 public class Main {
-    static ArrayList<Pizza> bestellungen = new ArrayList<>();
 
-    public static void bestellen(String addresse, String pizzaName) {
-        Pizza pizza = new Pizza(addresse, pizzaName);
-        bestellungen.add(pizza);
+    static PizzaFabrik pizzaFabrik = new PizzaFabrik();
+    static ArrayList<Bestellung> bestellungen = new ArrayList<>();
+
+    public static void bestellen(String adresse, String pizzaName) {
+        Pizza pizza = pizzaFabrik.holePizza(pizzaName);
+        Bestellung pizzaBestellung = new Bestellung(adresse, pizza);
+        bestellungen.add(pizzaBestellung);
     }
 
     public static void main(String[] args) {
-
         bestellen("Adresse1", "Pizza Verdure");
         bestellen("Adresse2", "Pizza Caprese");
         bestellen("Adresse3", "Pizza Verdure");
@@ -18,9 +20,11 @@ public class Main {
         bestellen("Adresse6", "Pizza Verdure");
         bestellen("Adresse7", "Pizza Caprese");
 
-        for (Pizza pizza : bestellungen) {
+        for (Bestellung bestellung : bestellungen) {
+            Pizza pizza = bestellung.pizza;
             pizza.zubereiten();
-            pizza.ausliefern();
+            String adresse = bestellung.adresse;
+            pizza.ausliefern(adresse);
         }
     }
 }
