@@ -20,7 +20,6 @@ public class Main {
     /**
      * Methode für den Lieferdienst
      *
-     * @param args
      */
     public static void main(String[] args) {
         bestellen("Adresse1", "Pizza Verdure");
